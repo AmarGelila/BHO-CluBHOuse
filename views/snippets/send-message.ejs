@@ -1,0 +1,12 @@
+<section id="send-message">
+  <form action="/send-message" method="post">
+    <textarea
+      name="message"
+      id="message"
+      placeholder="Write your message..."
+      required
+    ></textarea>
+    <%- include("formError", {name: "message"}) %>
+    <button type="submit">Send</button>
+  </form>
+</section>

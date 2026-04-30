@@ -1,0 +1,6 @@
+<% if ( locals.errors ) { %>
+    <% const message = errors.find((message) => +message[0] === index ) %>
+    <% if ( message ) { %>
+        <p class="error"> <%= message.slice(3) %> </p>
+    <% } %>
+<% } %>

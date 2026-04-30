@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In</title>
+    <link rel="stylesheet" href="/style.css" />
+
+  </head>
+  <body>
+
+    <main>
+    <h1>Log In </h1>
+    <form action="" method="post">
+      <input type="text" id="email" name="email" placeholder="Email" autocomplete="email" required />
+      <%- include("snippets/flashError", {index: 0}) %>
+      <input type="password" id="password" name="password" placeholder="Password" required />
+      <%- include("snippets/flashError", {index: 1}) %>
+      <button type="submit">Log In</button>
+    </form>
+
+    <p class="auth-footer">
+        Don't have an account?
+      <a href="/sign-up">Sign Up</a>
+    </p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BHO cluBHOuse</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/be-member">Be A Member</a></li>
+          <li><a href="/log-out">Log Out</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main id="main">
+      <section class="chat">
+        <% if ( user.private_membership ) { %>
+
+          <% for ( const message of messages ) { %>
+            <div class="message <%= message.sender_id === user.id ? 'userMessage' : '' %> ">
+              <p class="text"> <%= message.text %> </p>
+              <div class="info">
+                <span class="author"> <%= message.fullname %> </span>
+                <span class="time"> <%= message.created_at.toString().slice(0,21) %> </span>
+              </div>
+            </div>
+          <% } %>
+
+        <% } else { %>
+
+          <% for ( const message of messages ) { %>
+            <div class="message <%= message.sender_id === user.id ? 'userMessage' : '' %> ">
+              <p class="text"> <%= message.text %> </p>
+            </div>
+          <% } %>
+
+        <% } %>
+        
+      </section>
+
+      <%- include("snippets/send-message") %>
+
+    </main>
+  </body>
+</html>
