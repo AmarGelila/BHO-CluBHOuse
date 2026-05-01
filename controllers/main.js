@@ -25,4 +25,11 @@ async function postMessage(req, res) {
   res.redirect("/");
 }
 
-export { getMainPage, postMessage };
+async function logOut(req, res) {
+  req.logOut(() => {
+    req.session.destroy();
+    res.clearCookie("connect.sid");
+    res.redirect("/log-in");
+  });
+}
+export { getMainPage, postMessage, logOut };

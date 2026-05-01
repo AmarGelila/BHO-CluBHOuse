@@ -30,7 +30,7 @@
           <button type="submit" <%= !locals.disableSend && 'disabled' %>>Verify</button>
         </form>
       <% } else { %>
-        <h1>You are already a BHOian , <%= user.fullname  %></h1>
+        <%- include("confirm",{ title: "Already BHOian",message: `You are already a BHOian , ${user.fullname}` , link: "/" , linkText: "Home" }) %>
       <% } %>
     </main>
   </body>

@@ -118,7 +118,9 @@ nav a {
 
 #send-message form {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -135,14 +137,8 @@ nav a {
 }
 
 #send-message button {
-  background: none;
-  border: none;
-  color: var(--messenger-blue);
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1rem;
+  border-radius: 20px;
 }
-
 /* --- Auth Pages (Sign Up / Log In) --- */
 #sign-up,
 #log-in,
@@ -157,6 +153,7 @@ main:not(#main) {
 h1 {
   margin-bottom: 20px;
   font-size: 1.5rem;
+  color: var(--messenger-blue);
 }
 
 form {
@@ -204,6 +201,14 @@ button[type="submit"]:disabled {
   margin-top: -8px;
   margin-bottom: 5px;
 }
+#error {
+  text-align: center;
+}
+#error h1 {
+  font-size: 1.2rem;
+  margin: 30px auto;
+  color: var(--error-red);
+}
 
 /* --- Membership Page Specifics --- */
 #be-member h1 p {
@@ -216,20 +221,19 @@ button[type="submit"]:disabled {
   color: var(--text-gray);
   display: block;
   margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .confirm h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: var(--text-gray);
-  margin: 100px auto;
+  margin: 30px auto;
   padding: 30px;
   color: var(--messenger-blue);
 }
 
 .confirm a {
   display: inline-block;
-  margin-top: 20px;
   padding: 12px 20px;
   background-color: var(--messenger-blue);
   color: white;

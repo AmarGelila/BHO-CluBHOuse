@@ -20,6 +20,10 @@ const SQL = `
           ON DELETE SET NULL
     );
 
+    CREATE INDEX idx_users_email ON users(email);
+    CREATE INDEX idx_messages_sender_id ON messages(sender_id);
+
+
     INSERT INTO users (fullname, password, email, private_membership)
     VALUES 
     ('Jordan Smith', 'pbkdf2_sha256$250000$hashed_val_1', 'jordan.smith@example.com',FALSE),
