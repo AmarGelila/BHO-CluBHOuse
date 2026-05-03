@@ -20,8 +20,8 @@ const SQL = `
           ON DELETE SET NULL
     );
 
-    CREATE INDEX idx_users_email ON users(email);
-    CREATE INDEX idx_messages_sender_id ON messages(sender_id);
+    CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+    CREATE INDEX IF NOT EXISTS idx_messages_sender_id ON messages(sender_id);
 `;
 
 async function main() {
