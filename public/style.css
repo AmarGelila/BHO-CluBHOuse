@@ -156,6 +156,17 @@ h1 {
   color: var(--messenger-blue);
 }
 
+h3 {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: var(--text-gray);
+}
+#sign-up h1,
+#log-in h1 {
+  font-size: 2rem;
+  margin: 20px auto;
+}
+
 form {
   display: flex;
   flex-direction: column;

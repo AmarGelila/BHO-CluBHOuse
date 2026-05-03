@@ -2,9 +2,9 @@ import "dotenv/config";
 import { Pool } from "pg";
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URI,
+  connectionString: process.env.POSTGRESQL_ADDON_URI,
   ssl: {
-    rejectUnauthorized: process.env.NODE_ENV === "production" ? true : false,
+    rejectUnauthorized: false,
   },
 });
 
