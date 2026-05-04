@@ -10,6 +10,11 @@ router.use((req, res, next) => {
   res.set("Cache-Control", "no-store, no-cache, must-revalidate, private");
   next();
 });
+
+router.use((req, res, next) => {
+  if (!req.isAuthenticated()) return res.redirect("/log-in");
+  next();
+});
 router.get("", catchError(getMainPage));
 router.get("/log-out", catchError(logOut));
 router.post("/send-message", sendMessageValidator, catchError(postMessage));

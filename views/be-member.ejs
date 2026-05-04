@@ -10,27 +10,27 @@
   <body>
     <main id="be-member">
 
-      <% if ( !locals.user?.private_membership ) { %>
-        <% if ( locals.message ) { %>
+      <% if ( !locals?.user?.private_membership ) { %>
+        <% if ( locals?.message ) { %>
           <p class="error"> <%= message  %></p>
         <% } %>
-        <h1>Be a BHOian , <%= user.fullname  %>
+        <h1>Be a BHOian , <%= user?.fullname  %>
           <p>to see message sender and time</p>
         </h1>
         <br>
         <br>
         <p>we need to send you a code via email to be member</p>
         <form action="/be-member" method="post">
-          <button type="submit" <%= locals.disableSend && 'disabled' %> >Send Code</button>
+          <button type="submit" <%= locals?.disableSend && 'disabled' %> >Send Code</button>
           <small>Note this code expires after 10 minutes</small>
         </form>
         <form action="/be-member/verify" method="post">
           <label for="code">Verification Code: </label>
           <input type="text" name="code" id="code">
-          <button type="submit" <%= !locals.disableSend && 'disabled' %>>Verify</button>
+          <button type="submit" <%= !locals?.disableSend && 'disabled' %>>Verify</button>
         </form>
       <% } else { %>
-        <%- include("confirm",{ title: "Already BHOian",message: `You are already a BHOian , ${user.fullname}` , link: "/" , linkText: "Home" }) %>
+        <%- include("confirm",{ title: "Already BHOian",message: `You are already a BHOian , ${user?.fullname}` , link: "/" , linkText: "Home" }) %>
       <% } %>
     </main>
   </body>
