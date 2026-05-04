@@ -16,6 +16,7 @@ const app = express();
 app.use(express.static("public"));
 app.set("views", path.join(import.meta.dirname, "views"));
 app.set("view engine", "ejs");
+app.set("trust proxy", 1);
 app.use(
   session({
     store: new (pgSession(session))({
@@ -23,7 +24,7 @@ app.use(
     }),
     cookie: {
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: "lax",
     },
     secret: process.env.SESSION_SECRET,
     resave: false,

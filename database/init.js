@@ -3,7 +3,7 @@ import { Client } from "pg";
 
 const SQL = `
 
-    CREATE TABLE IF NOT EXISTS "session" (
+    CREATE TABLE IF NOT EXISTS session (
       "sid" varchar PRIMARY KEY COLLATE "default",
       "sess" json NOT NULL,
       "expire" timestamp(6) NOT NULL
