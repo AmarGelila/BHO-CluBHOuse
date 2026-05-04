@@ -2,12 +2,14 @@ import "dotenv/config";
 import express from "express";
 import crypto from "crypto";
 import session from "express-session";
+import pgSession from "connect-pg-simple";
 import flash from "connect-flash";
 import passport from "passport";
 import "./setup/auth.js";
 import path from "path";
 import mainRouter from "./routes/main.js";
 import authRouter from "./routes/auth.js";
+import pool from "./database/pool.js";
 
 const app = express();
 
@@ -16,8 +18,11 @@ app.set("views", path.join(import.meta.dirname, "views"));
 app.set("view engine", "ejs");
 app.use(
   session({
+    store: new (pgSession(session))({
+      pool: pool,
+    }),
     cookie: {
-      secure: process.env.NODE_ENV === "production" ? true : false,
+      secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
     },
     secret: process.env.SESSION_SECRET,
