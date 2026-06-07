@@ -20,8 +20,5 @@ COPY . .
 EXPOSE 3000
 
 # Fire up the Express application
-<<<<<<< HEAD
-CMD ["pnpm", "start"]
-=======
+
 CMD node database/init.js && pnpm start
->>>>>>> 0263354 (Fix Docker Setup)
