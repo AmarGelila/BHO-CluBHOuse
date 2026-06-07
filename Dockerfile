@@ -1,20 +1,23 @@
-# Use the official Node.js long-term support (LTS) image as the base
+# Use the official Node.js long-term support image
 FROM node:20-alpine
+
+# Enable Corepack to install and manage pnpm dynamically
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json first to leverage Docker's cache behavior
-COPY package*.json ./
+# Copy dependency mappings first to leverage layer caching
+COPY package.json pnpm-lock.yaml ./
 
-# Install production dependencies only
-RUN npm ci --only=production
+# Install production-only dependencies strictly matching the lockfile
+RUN pnpm install --prod --frozen-lockfile
 
-# Copy the rest of your application source code
+# Copy the remaining application source code
 COPY . .
 
-# Expose the port your app runs on (Back4app assigns this dynamically)
+# Expose the port (Back4app binds process.env.PORT to this container layer)
 EXPOSE 3000
 
-# Start the application using your package.json start script
-CMD ["npm", "start"]
+# Fire up the Express application
+CMD ["pnpm", "start"]
